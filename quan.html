@@ -2,13 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>石头剪刀布</title>
+    <title>猪猪miss雯雯</title>
     <script src="lufylegend-1.7.6.min.js"></script>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+    .nav{
+            height:64px;
+            background-color: #ff00bc94;
+            line-height: 64px;
+            padding:0 24px;
+        }
+        .nav>a{
+            display: inline-block;
+            width: 80px;
+            font-size:18px;
+            text-decoration: none;
+            color:#fff;
+            text-align: center;
+        }   
+        .nav>a:hover{
+            background-color: gray;
+        }
+        .showgray{
+            background-color: gray;
+        }
+        p{
+            margin:24px;
+            font-size: 24px;
+            font-weight: 500;
+        }
+        .showText{
+            margin:24px;
+            color: red;
+        }
+    </style>
 </head>
 <body>
+    <div class="nav">
+    <a href="./index.html">心情</a>
+    <a href="./game.html">追你</a>
+    
+    <a href="./time.html">时间</a>
+    <a href="./quan.html"  class="showgray">游戏</a>
+    <a href="./record.html">记录</a>
+</div>
+    <p>如果哪一天雯雯赢了，猪猪就会忘记你了</p>
+    <div class="showText"></div>
+    <!-- <img src="./img/bg.jpg" style="float: right;width: 300px;height:auto;"> -->
     <div id="myDiv">
         
     </div>
+    
     <script>
         init(200,"myDiv",600,300,main);
         var imgData=new Array(
@@ -102,12 +149,12 @@
 
             //绘制玩家和电脑
             var selfText=new LTextField();
-            selfText.text="玩家";
+            selfText.text="雯雯";
             selfText.color="#fff";
              selfText.x=bgLayer.getWidth()/2-70;
             selfText.y=50;
             var computerText=new LTextField();
-            computerText.text="电脑";
+            computerText.text="猪猪";
             computerText.color="#fff";
             computerText.x=bgLayer.getWidth()-computerLBit.getWidth()*2+10;
             computerText.y=50;
@@ -145,13 +192,16 @@
             bgLayer.removeChild(computerLBit);
             var randomNum =0;
             if(type==0){
-                    randomNum=2
+                let array =[0,2]
+                    randomNum=array[Math.round(Math.random()*(array.length-1))]
             }
             else if(type==1){
-                 randomNum=0
+                 let array =[0,1]
+                    randomNum=array[Math.round(Math.random()*(array.length-1))]
             }
             else{
-                 randomNum=1
+                  let array =[1,2]
+                    randomNum=array[Math.round(Math.random()*(array.length-1))]
             }
            
             computerLBit=new LBitmap(showList[randomNum]);
@@ -165,19 +215,23 @@
                 case 0://石头
                         if(randomNum==0){//平局
                             pingNum++;
+                             document.getElementsByClassName('showText')[0].innerHTML='平局，再来一次'
                         }else if(randomNum==1){//赢
                             successNum++;
                         }else if(randomNum==2){//输
                             failNum++;
-                            alert('你输了')
+                            document.getElementsByClassName('showText')[0].innerHTML='你输了，猪猪还是不能忘记你'
+                            // alert('
                         }
                     break;
                 case 1://剪刀
                         if(randomNum==0){//输
                              failNum++;
-                             alert('你输了')
+                             document.getElementsByClassName('showText')[0].innerHTML='你输了，我还是放不下你'
+                            
                         }else if(randomNum==1){//平局
                             pingNum++;
+                             document.getElementsByClassName('showText')[0].innerHTML='打平了，我运气真好'
                         }else if(randomNum==2){//赢
                               successNum++;
                         }
@@ -187,9 +241,11 @@
                                   successNum++;
                         }else if(randomNum==1){//输
                                      failNum++;
-                                     alert('你输了')
+                                      document.getElementsByClassName('showText')[0].innerHTML='你输了，但是猪猪不会打扰你了'
+                                    
                         }else if(randomNum==2){//平局
                                     pingNum++;
+                                    document.getElementsByClassName('showText')[0].innerHTML='平局，下把雯雯就赢了'
                         }
 
                     break;
