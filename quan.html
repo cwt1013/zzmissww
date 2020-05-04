@@ -49,8 +49,8 @@
     <a href="./quan.html"  class="showgray">游戏</a>
     <a href="./record.html">记录</a>
 </div>
-    <p>如果哪一天雯雯赢了，猪猪就会忘记你了</p>
-    <div class="showText"></div>
+    <p class="showText">如果哪一天雯雯赢了，猪猪就会忘记你了</p>
+    <!-- <div class="showText"></div> -->
     <!-- <img src="./img/bg.jpg" style="float: right;width: 300px;height:auto;"> -->
     <div id="myDiv">
         
@@ -220,14 +220,14 @@
                             successNum++;
                         }else if(randomNum==2){//输
                             failNum++;
-                            document.getElementsByClassName('showText')[0].innerHTML='你输了，猪猪还是不能忘记你'
+                            document.getElementsByClassName('showText')[0].innerHTML='你输了，猪猪是不会忘记你'
                             // alert('
                         }
                     break;
                 case 1://剪刀
                         if(randomNum==0){//输
                              failNum++;
-                             document.getElementsByClassName('showText')[0].innerHTML='你输了，我还是放不下你'
+                             document.getElementsByClassName('showText')[0].innerHTML='你输了，我是不会放不下你得'
                             
                         }else if(randomNum==1){//平局
                             pingNum++;
@@ -241,7 +241,7 @@
                                   successNum++;
                         }else if(randomNum==1){//输
                                      failNum++;
-                                      document.getElementsByClassName('showText')[0].innerHTML='你输了，但是猪猪不会打扰你了'
+                                      document.getElementsByClassName('showText')[0].innerHTML='你输了，你能不能赢一把'
                                     
                         }else if(randomNum==2){//平局
                                     pingNum++;
